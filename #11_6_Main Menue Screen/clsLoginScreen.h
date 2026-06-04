@@ -9,24 +9,32 @@
 
 
 
-class clsLoginScreen:protected clsScreen
+class clsLoginScreen :protected clsScreen
 {
 
 private:
 
-    static  void _Login()
+    static  bool _Login()
     {
         bool LoginFaild = false;
+        short FaildLoginCounter = 0;
 
         string Username, Password;
+
+
         do
         {
-
             if (LoginFaild)
             {
+                FaildLoginCounter++;
                 cout << "\nInvlaid Username/Password!\n\n";
+                cout << "You have " << (3 - FaildLoginCounter) << " Trials to login\n\n";
             }
-
+            if (FaildLoginCounter == 3)
+            {
+                cout << "\nYou are Locked after 3 faild trails.\n\n  ";
+                return false;
+            }
             cout << "Enter Username? ";
             cin >> Username;
 
@@ -39,18 +47,23 @@ private:
 
         } while (LoginFaild);
 
+        CurrentUser.RegisterLogin();
         clsMainScreen::ShowMainMenue();
+        return true;
+    }
+    static void _RegisterLogin()
+    {
 
     }
 
+                             
 public:
 
-
-    static void ShowLoginScreen()
+    static bool ShowLoginScreen()
     {
         system("cls");
         _DrawScreenHeader("\t  Login Screen");
-        _Login();
+       return  _Login();
 
     }
 
