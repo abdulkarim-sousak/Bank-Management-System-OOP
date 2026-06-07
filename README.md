@@ -38,6 +38,8 @@ This project demonstrates practical implementation of:
 - Deposit funds
 - Withdraw funds
 - View total balances
+- View total balances
+- Transfer funds between accounts
 - Real-time balance updates
 
 ## User Management
@@ -67,7 +69,11 @@ Data is saved into:
 ```text
 LoginRegister.txt
 ```
-
+## Transfer Log System
+- Automatic logging of every transfer operation
+- Records source account, destination account, amount, date, time, and username
+- Persistent storage in TransfersLog.txt
+- View full transfer history on-screen via dedicated screen
 ---
 
 # Project Architecture
@@ -178,6 +184,8 @@ Input validation utilities.
 - clsDepositeScreen
 - clsWithdrawScreen
 - clsTotalBalancesScreen
+- clsTransferScreen — Handles fund transfer between two client accounts
+- clsShowTransferLogScreen — Displays all completed transfer operations on the console
 
 ---
 
@@ -218,7 +226,20 @@ Username
 Password
 Permissions
 ```
+## TransfersLog.txt
 
+Stores:
+
+​```text
+Date
+Time
+Source Account Number
+Destination Account Number
+Amount
+Source Balance After Transfer
+Destination Balance After Transfer
+Username
+​```
 ---
 
 # Permissions Model
@@ -235,7 +256,7 @@ Example Permission Matrix
 | Transactions | Deposit / Withdraw |
 | Manage Users | User administration |
 | Login Register | View login history |
-
+| Transfer Log | View transfer history |
 ---
 
 # OOP Concepts Implemented

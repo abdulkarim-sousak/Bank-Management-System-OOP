@@ -135,7 +135,7 @@ private:
         return LoginRecord;
 
     }
-
+       
     
     void _Update()
     {
@@ -413,6 +413,7 @@ public:
             MyFile.close();
         }
     }
+  
     static  vector <stLoginRegisterRecord> GetLoginRegisterList()
     {
         vector <stLoginRegisterRecord> vLoginRegisterRecord;

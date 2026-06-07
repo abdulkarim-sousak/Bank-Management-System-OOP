@@ -51,11 +51,6 @@ private:
         clsMainScreen::ShowMainMenue();
         return true;
     }
-    static void _RegisterLogin()
-    {
-
-    }
-
                              
 public:
 
