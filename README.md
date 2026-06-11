@@ -1,6 +1,8 @@
 
 content = r"""# 🏦 Bank Management System
 
+ 🏦 Bank Management System
+
 ## Project Overview
 
 The Bank Management System is a console-based banking application developed in **C++** using **Object-Oriented Programming (OOP)** principles. The system provides a complete environment for managing bank clients, user accounts, permissions, authentication, transactions, and activity logs.
@@ -74,11 +76,18 @@ LoginRegister.txt
 - Records source account, destination account, amount, date, time, and username
 - Persistent storage in TransfersLog.txt
 - View full transfer history on-screen via dedicated screen
+
+
+## Currency Exchange System
+- View available currencies with exchange rates relative to USD.
+- Find currency details using Currency Code or Country Name.
+- Update exchange rates dynamically.
+- Currency Calculator tool to compute conversions between different currencies or to USD.
+- Persistent file-based storage for currency data.
 ---
 
 # Project Architecture
 
-```text
 +----------------------+
 |     Main Program     |
 +----------+-----------+
@@ -93,14 +102,13 @@ LoginRegister.txt
 |      Main Menu       |
 +----------+-----------+
            |
-    +------+------+
-    |             |
-    v             v
-Clients       Transactions
-    |             |
-    v             v
-Users       Login Register
-```
+    +------+------+-----------------+
+    |             |                 |
+    v             v                 v
+Clients       Transactions   Currency Exchange
+    |             |                 |
+    v             v                 v
+Users       Login Register    Transfers Log
 
 ---
 
@@ -135,6 +143,15 @@ Responsibilities:
 - Permissions
 - Authentication
 
+### clsCurrency
+Represents a currency entity.
+
+Responsibilities:
+- Country Name
+- Currency Code
+- Currency Name
+- Rate (Relative to USD)
+- Currency File Operations (Loading, updating rates, and saving)
 ---
 
 # Utility Classes
@@ -187,6 +204,13 @@ Input validation utilities.
 - clsTransferScreen — Handles fund transfer between two client accounts
 - clsShowTransferLogScreen — Displays all completed transfer operations on the console
 
+## Currency Exchange Screens
+
+- clsCurrencyExchangeMainScreen — The main menu for currency operations
+- clsCurrenciesListScreen — Displays a list of all supported currencies and rates
+- clsFindCurrencyScreen — Allows searching for a currency by code or country
+- clsUpdateCurrencyRateScreen — Handles updating exchange rates
+- clsCurrencyCalculatorScreen — Computes conversion amounts between two currencies
 ---
 
 # Data Storage
@@ -240,6 +264,17 @@ Source Balance After Transfer
 Destination Balance After Transfer
 Username
 ​```
+
+
+## Currencies.txt
+
+Stores:
+
+```text
+Country
+Currency Code
+Currency Name
+Rate
 ---
 
 # Permissions Model
@@ -328,7 +363,7 @@ Clients Transactions Users
 
 # Future Improvements
 
-- Password hashing
+
 - Database integration (SQL Server / MySQL)
 - GUI version using Qt or C#
 - REST API backend
